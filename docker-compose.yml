@@ -1,24 +1,17 @@
 version: '2'
 services:
   server:
-    image: pibot/gocd-server
-    build:
-      context: ./gocd/server/
-      dockerfile: Dockerfile
-    ports:
-      - 80:8153
-      - 443:8154
-  agent:
-    image: pibot/gocd-agent
-    build:
-      context: ./gocd/agent/
-      dockerfile: Dockerfile
-    links:
-      - server
-  pythonagent:
-    image: openjdk
-    build:
-      context: ./gocd/pythonAgent/
-      dockerfile: Dockerfile
-    links:
-      - server
+     image: pibot/gocd-server
+     build:
+       context: ./gocd/server/
+       dockerfile: Dockerfile
+     ports:
+       - 80:8153
+       - 443:8154
+  node-agent:
+      image: node-agent
+      build:
+        context: ./gocd/node-agent/
+        dockerfile: Dockerfile
+      links:
+        - server
