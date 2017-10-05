@@ -20,7 +20,7 @@ RUN apk update && \
     COPY resources/config-init.sh   /
     COPY resources/base-config      /base-config
 
-    RUN wget -P /opt/gocd-server/plugins/external/ https://github.com/tomzo/gocd-yaml-config-plugin/releases/download/0.4.0/yaml-config-plugin-0.4.0.jar
+    RUN wget -P /opt/gocd-server/plugins/external/ https://github.com/tomzo/gocd-yaml-config-plugin/releases/download/0.5.0/yaml-config-plugin-0.5.0.jar
     RUN wget -P /opt/gocd-server/plugins/external/ https://github.com/gocd-contrib/gocd-oauth-login/releases/download/v2.3/google-oauth-login-2.3.jar
 
     EXPOSE 8153 8154

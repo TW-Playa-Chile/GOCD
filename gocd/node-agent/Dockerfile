@@ -11,10 +11,9 @@ ENV GO_AGENT_AUTOREGISTER_RESOURCE  node-agent
 RUN ln -sf /godata/ssh-keys ~/.ssh
 
 RUN apk update && \
-    apk add ca-certificates bash wget openssh libstdc++ curl perl-net-telnet && \
+    apk add ca-certificates bash git wget openssh libstdc++ curl perl-net-telnet && \
     update-ca-certificates
 
-RUN apk add git
 
 RUN wget -O /tmp/gocd-installer.zip https://download.gocd.io/binaries/17.3.0-4704/generic/go-agent-17.3.0-4704.zip && \
     unzip -d /tmp /tmp/gocd-installer.zip && \
@@ -37,7 +36,7 @@ RUN apk add --no-cache git build-base automake autoconf linux-headers && \
   ./configure --enable-statedir=/tmp --without-python --without-pcre && \
   make && \
   make install && \
-  apk del git build-base automake autoconf linux-headers && \
+  apk del build-base automake autoconf linux-headers && \
   rm -r /tmp/watchman-src
 
 COPY resources/autoregister.sh /
